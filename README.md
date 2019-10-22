@@ -75,27 +75,25 @@ sensor:
 * **Braintree**
 
 ### Supported Stops on the `Orange` line
+* **Oak Grove**
+* Malden Center
 * Wellington
 * Assembly
-* Green Street
-* Jackson Square
-* Roxbury Crossing
-* Chinatown
-* Ruggles
 * Sullivan Square
-* Tufts Medical Center
-* **Oak Grove**
-* Oak Grove Busway
-* Back Bay
 * Community College
-* State
 * North Station
-* Downtown Crossing
-* Wellington Station Busway
-* Stony Brook
-* Malden Center
 * Haymarket
+* State
+* Downtown Crossing
+* Chinatown
+* Tufts Medical Center
+* Back Bay
 * Massachusetts Avenue
+* Ruggles
+* Roxbury Crossing
+* Jackson Square
+* Stony Brook
+* Green Street
 * **Forest Hills**
 
 ## Future Plans 
