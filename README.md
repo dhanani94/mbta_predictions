@@ -106,7 +106,7 @@ sensor:
 * Create custom compnent in HACS 
 * [Buy me coffee?](https://www.buymeacoffee.com/dhanani94)
 
-## inspirations
+## Inspirations
 
 * [Munich public transport departure card](https://community.home-assistant.io/t/lovelace-munich-public-transport-departure-card/59622)
 * [RMV transport departures](https://community.home-assistant.io/t/rmv-transport-departures/63935)
