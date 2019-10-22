@@ -114,7 +114,7 @@ sensor:
 
 ## Future Plans 
 
-* Add support for the other lines (blue, green, silver)
+* Add support for the other lines (green and silver)
 * Add support for buses 
 * Create PR for custom component in the [Home Asistant Repo](https://github.com/home-assistant/home-assistant/tree/dev/homeassistant/components)
 * Create custom compnent in HACS 
