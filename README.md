@@ -79,4 +79,5 @@ sensor:
 * Add support for buses 
 * Create PR for custom component in the [Home Asistant Repo](https://github.com/home-assistant/home-assistant/tree/dev/homeassistant/components)
 * Create custom compnent in HACS 
+* [Buy me coffee?](https://www.buymeacoffee.com/dhanani94)
 
