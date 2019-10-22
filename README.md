@@ -1,13 +1,13 @@
 # mbta_predictions
-Home Assistant custom component for MBTA predictions. Adding this custom component allows adding sensors for specific routes to Home Assistant. 
+Home Assistant custom component for MBTA predictions. Adding this custom component allows adding sensors for specific routes to Home Assistant. After the sensors are set up, they can be visualised in LoveLace using the custom [mbta-card](https://github.com/dhanani94/mbta-card).
 
 ## Installation 
 The custom component source code is located [here](/custom_component/mbta_predictions). Copying the `custom_component` directory into the root directory (alongside the `configuration.yml` file) for users using HASSIO. 
 
 ## Configuration 
-To enable this sensor, add the following lines to your configuration.yaml file:
+To enable this sensor, add the following lines to your `configuration.yaml` file:
 
-```
+```yaml
 sensor:
   - platform: mbta_predictions
     predictions:
@@ -17,7 +17,8 @@ sensor:
 ```
 
 example `configuration.yml`:
-```
+
+```yaml
 # adds sensor info for MBTA Predictions
 sensor:
   - platform: mbta_predictions
@@ -81,3 +82,8 @@ sensor:
 * Create custom compnent in HACS 
 * [Buy me coffee?](https://www.buymeacoffee.com/dhanani94)
 
+## inspirations
+
+* [Munich public transport departure card](https://community.home-assistant.io/t/lovelace-munich-public-transport-departure-card/59622)
+* [RMV transport departures](https://community.home-assistant.io/t/rmv-transport-departures/63935)
+* [MVG](https://www.home-assistant.io/integrations/mvglive)
