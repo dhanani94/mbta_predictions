@@ -51,7 +51,7 @@ sensor:
 
 ### Supported Stops on the `Red` line
 
-* Alewife
+* **Alewife**
 * Davis
 * Porter
 * Harvard
@@ -67,16 +67,40 @@ sensor:
 * Savin Hill
 * Fields Corner
 * Shawmut
-* Ashmont
+* **Ashmont**
 * North Quincy
 * Wollaston
 * Quincy Center
 * Quincy Adams
-* Braintree
+* **Braintree**
+
+### Supported Stops on the `Orange` line
+* Wellington
+* Assembly
+* Green Street
+* Jackson Square
+* Roxbury Crossing
+* Chinatown
+* Ruggles
+* Sullivan Square
+* Tufts Medical Center
+* **Oak Grove**
+* Oak Grove Busway
+* Back Bay
+* Community College
+* State
+* North Station
+* Downtown Crossing
+* Wellington Station Busway
+* Stony Brook
+* Malden Center
+* Haymarket
+* Massachusetts Avenue
+* **Forest Hills**
 
 ## Future Plans 
 
-* Add support for the other lines (orange, blue, green, silver)
+* Add support for the other lines (blue, green, silver)
 * Add support for buses 
 * Create PR for custom component in the [Home Asistant Repo](https://github.com/home-assistant/home-assistant/tree/dev/homeassistant/components)
 * Create custom compnent in HACS 

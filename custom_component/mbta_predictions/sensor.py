@@ -41,7 +41,28 @@ MBTA_STOP_LOOKUP_DICT = {
     "WOLLASTON": "place-wlsta",
     "QUINCYCENTER": "place-qnctr",
     "QUINCYADAMS": "place-qamnl",
-    "BRAINTREE": "place-brntn"
+    "BRAINTREE": "place-brntn",
+    "WELLINGTON": "place-welln",
+    "ASSEMBLY": "place-astao",
+    "GREENSTREET": "place-grnst",
+    "JACKSONSQUARE": "place-jaksn",
+    "ROXBURYCROSSING": "place-rcmnl",
+    "CHINATOWN": "place-chncl",
+    "RUGGLES": "place-rugg",
+    "SULLIVANSQUARE": "place-sull",
+    "TUFTSMEDICALCENTER": "place-tumnl",
+    "OAKGROVE": "place-ogmnl",
+    "OAKGROVEBUSWAY": "place-ogmnl",
+    "BACKBAY": "place-bbsta",
+    "COMMUNITYCOLLEGE": "place-ccmnl",
+    "STATE": "place-state",
+    "NORTHSTATION": "place-north",
+    "WELLINGTONSTATIONBUSWAY": "place-welln",
+    "STONYBROOK": "place-sbmnl",
+    "MALDENCENTER": "place-mlmnl",
+    "HAYMARKET": "place-haecl",
+    "MASSACHUSETTSAVENUE": "place-masta",
+    "FORESTHILLS": "place-forhl"
 }
 
 SCAN_INTERVAL = timedelta(seconds=30)
