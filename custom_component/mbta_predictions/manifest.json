@@ -1,0 +1,8 @@
+{
+  "domain": "mbta_predictions",
+  "name": "MBTA Predictions",
+  "documentation": "https://github.com/dhanani94/mbta_homeassistant",
+  "dependencies": [],
+  "codeowners": ["dhanani94"],
+  "requirements": []
+}
