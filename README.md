@@ -75,6 +75,7 @@ sensor:
 * **Braintree**
 
 ### Supported Stops on the `Orange` line
+
 * **Oak Grove**
 * Malden Center
 * Wellington
@@ -95,6 +96,21 @@ sensor:
 * Stony Brook
 * Green Street
 * **Forest Hills**
+
+### Supported Stops on the `Blue` line
+
+* **Wonderland**
+* Revere Beach
+* Beachmont
+* Suffolk Downs
+* Orient Heights
+* Wood Island
+* Airport
+* Maverick
+* Aquarium
+* State
+* Government Center
+* **Bowdoin**
 
 ## Future Plans 
 

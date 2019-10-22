@@ -62,7 +62,18 @@ MBTA_STOP_LOOKUP_DICT = {
     "MALDENCENTER": "place-mlmnl",
     "HAYMARKET": "place-haecl",
     "MASSACHUSETTSAVENUE": "place-masta",
-    "FORESTHILLS": "place-forhl"
+    "FORESTHILLS": "place-forhl",
+    "AIRPORT": "place-aport",
+    "AQUARIUM": "place-aqucl",
+    "BEACHMONT": "place-bmmnl",
+    "BOWDOIN": "place-bomnl",
+    "GOVERNMENTCENTER": "place-gover",
+    "MAVERICK": "place-mvbcl",
+    "ORIENTHEIGHTS": "place-orhte",
+    "REVEREBEACH": "place-rbmnl",
+    "SUFFOLKDOWNS": "place-sdmnl",
+    "WONDERLAND": "place-wondl",
+    "WOODISLAND": "place-wimnl"
 }
 
 SCAN_INTERVAL = timedelta(seconds=30)
