@@ -1,4 +1,3 @@
-"""Support for departure information for public transport in Munich."""
 import datetime
 import logging
 from datetime import timedelta
@@ -115,20 +114,21 @@ class MBTASensor(Entity):
         """Initialize the sensor"""
         self._stop = stop
         self._direction = direction
-        self._route = route
+        self._route = f"{route[0].upper()}{route[1:].lower()}"
         self._time_offset_sec = time_offset_min * 60
         self._limit = limit
-        self._name = name
-        self._stop_id = MBTA_STOP_LOOKUP_DICT.get(clean_stop_string(stop), None)
+        if name:
+            self._name = name
+        else:
+            self._name = f"mbta_{self._stop}"
+        self._stop_id = MBTA_STOP_LOOKUP_DICT.get(clean_stop_string(self._stop), None)
         self._base_url = "https://api-v3.mbta.com/predictions"
         self._arrival_times = []
 
     @property
     def name(self):
         """Return the name of the sensor"""
-        if self._name:
-            return self._name
-        return self._stop
+        return self._name
 
     @property
     def state(self):
