@@ -112,6 +112,129 @@ sensor:
 * Government Center
 * **Bowdoin**
 
+### Supported Stops on the `Green-B` line
+
+* **Boston College**
+* South Street
+* Chestnut Hill Avenue
+* Chiswick Road
+* Sutherland Road
+* Washington Street
+* Warren Street
+* Allston Street
+* Griggs Street
+* Harvard Avenue
+* Packards Corner
+* Babcock Street
+* Pleasant Street
+* Saint Paul Street
+* Boston University West
+* Boston University Central
+* Boston University East
+* Blandford Street
+* Kenmore
+* Hynes Convention Center
+* Copley
+* Arlington
+* Boylston
+* **Park Street**
+
+### Supported Stops on the `Green-C` line
+
+* **Cleveland Circle**
+* Englewood Avenue
+* Dean Road
+* Tappan Street
+* Washington Square
+* Fairbanks Street
+* Brandon Hall
+* Summit Avenue
+* Coolidge Corner
+* Saint Paul Street
+* Kent Street
+* Hawes Street
+* Saint Marys Street
+* Kenmore
+* Hynes Convention Center
+* Copley
+* Arlington
+* Boylston
+* Park Street
+* Government Center
+* Haymarket
+* **North Station**
+
+### Supported Stops on the `Green-C` line
+
+* **Cleveland Circle**
+* Englewood Avenue
+* Dean Road
+* Tappan Street
+* Washington Square
+* Fairbanks Street
+* Brandon Hall
+* Summit Avenue
+* Coolidge Corner
+* Saint Paul Street
+* Kent Street
+* Hawes Street
+* Saint Marys Street
+* Kenmore
+* Hynes Convention Center
+* Copley
+* Arlington
+* Boylston
+* Park Street
+* Government Center
+* Haymarket
+* **North Station**
+
+### Supported Stops on the `Green-D` line
+
+* **Riverside**
+* Woodland
+* Waban
+* Eliot
+* Newton Highlands
+* Newton Centre
+* Chestnut Hill
+* Reservoir
+* Beaconsfield
+* Brookline Hills
+* Brookline Village
+* Longwood
+* Fenway
+* Kenmore
+* Hynes Convention Center
+* Copley
+* Arlington
+* Boylston
+* Park Street
+* **Government Center**
+
+### Supported Stops on the `Green-E` line
+
+* Heath Street
+* Back of the Hill
+* Riverway
+* Mission Park
+* Fenwood Road
+* Brigham Circle
+* Longwood Medical Area
+* Museum of Fine Arts
+* Northeastern University
+* Symphony
+* Prudential
+* Copley
+* Arlington
+* Boylston
+* Park Street
+* Government Center
+* Haymarket
+* North Station
+* Science Park/West End
+* Lechmere
+
 ## Future Plans 
 
 * Add support for the other lines (green and silver)
