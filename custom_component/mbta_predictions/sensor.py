@@ -24,7 +24,7 @@ MBTA_COMMUTER_RAIL_LOOKUP_DICT = {
     "FITCHBURG": "CR-Fitchburg",
     "FOXBOROEVENTSERVICE": "CR-Foxboro",
     "FRAMINGHAMWORCESTER": "CR-Worcester",
-    "FRANKLINLINEFOXBOROPILOT": "CR-Franklin",
+    "FRANKLINFOXBORO": "CR-Franklin",
     "GREENBUSH": "CR-Greenbush",
     "HAVERHILL": "CR-Haverhill",
     "KINGSTONPLYMOUTH": "CR-Kingston",
