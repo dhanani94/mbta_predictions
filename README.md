@@ -171,7 +171,7 @@ sensor:
 * Westborough
 * Worcester
 
-### Supported Stops on the `Franklin Line/Foxboro` line
+### Supported Stops on the `Franklin/Foxboro` line
 
 * Back Bay
 * Dedham Corp Center
