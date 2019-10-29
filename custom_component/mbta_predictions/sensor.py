@@ -295,7 +295,7 @@ class MBTASensor(Entity):
         self._direction = direction
         if clean_stop_string(route) in MBTA_COMMUTER_RAIL_LOOKUP_DICT:
             self._route = MBTA_COMMUTER_RAIL_LOOKUP_DICT[clean_stop_string(route)]
-        else
+        else:
             self._route = f"{route[0].upper()}{route[1:].lower()}"
         self._time_offset_sec = time_offset_min * 60
         self._limit = limit
