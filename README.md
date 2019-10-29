@@ -112,6 +112,209 @@ sensor:
 * Government Center
 * **Bowdoin**
 
+## Commuter Rail
+
+### Supported Stops on the `Fairmount` line
+
+* Blue Hill Avenue
+* Dedham Corp Center
+* Fairmount
+* Four Corners/Geneva
+* Foxboro
+* Morton Street
+* Newmarket
+* Readville
+* South Station
+* Talbot Avenue
+* Uphams Corner
+
+### Supported Stops on the `Fitchburg` line
+
+* Ayer
+* Belmont
+* Brandeis/Roberts
+* Concord
+* Fitchburg
+* Hastings
+* Kendal Green
+* Lincoln
+* Littleton/Rte 495
+* North Leominster
+* North Station
+* Porter
+* Shirley
+* Silver Hill
+* South Acton
+* Wachusett
+* Waltham
+* Waverley
+* West Concord
+
+### Supported Stops on the `Framingham/Worcester` line
+
+* Ashland
+* Auburndale
+* Back Bay
+* Boston Landing
+* Framingham
+* Grafton
+* Lansdowne
+* Natick Center
+* Newtonville
+* South Station
+* Southborough
+* Wellesley Farms
+* Wellesley Hills
+* Wellesley Square
+* West Natick
+* West Newton
+* Westborough
+* Worcester
+
+### Supported Stops on the `Franklin/Foxboro` line
+
+* Back Bay
+* Dedham Corp Center
+* Endicott
+* Forge Park/495
+* Foxboro
+* Franklin
+* Hyde Park
+* Islington
+* Norfolk
+* Norwood Central
+* Norwood Depot
+* Plimptonville
+* Readville
+* Ruggles
+* South Station
+* Walpole
+* Windsor Gardens
+
+### Supported Stops on the `Greenbush` line
+
+* Cohasset
+* East Weymouth
+* Greenbush
+* JFK/UMass
+* Nantasket Junction
+* North Scituate
+* Quincy Center
+* South Station
+* West Hingham
+* Weymouth Landing/East Braintree
+
+### Supported Stops on the `Haverhill` line
+
+* Andover
+* Ballardvale
+* Bradford
+* Greenwood
+* Haverhill
+* Lawrence
+* Malden Center
+* Melrose Cedar Park
+* Melrose Highlands
+* North Station
+* North Wilmington
+* Reading
+* Wakefield
+* Wyoming Hill
+
+### Supported Stops on the `Kingston/Plymouth` line
+
+* Abington
+* Braintree
+* Halifax
+* Hanson
+* JFK/UMass
+* Kingston
+* Plymouth
+* Quincy Center
+* South Station
+* South Weymouth
+* Whitman
+
+### Supported Stops on the `Lowell` line
+
+* Anderson/Woburn
+* Lowell
+* Mishawum
+* North Billerica
+* North Station
+* Wedgemere
+* West Medford
+* Wilmington
+* Winchester Center
+
+### Supported Stops on the `Middleborough/Lakeville` line
+
+* Braintree
+* Bridgewater
+* Brockton
+* Campello
+* Holbrook/Randolph
+* JFK/UMass
+* Middleborough/Lakeville
+* Montello
+* Quincy Center
+* South Station
+
+### Supported Stops on the `Needham` line
+
+* Back Bay
+* Bellevue
+* Forest Hills
+* Hersey
+* Highland
+* Needham Center
+* Needham Heights
+* Needham Junction
+* Roslindale Village
+* Ruggles
+* South Station
+* West Roxbury
+
+### Supported Stops on the `Newburyport/Rockport` line
+
+* Beverly
+* Beverly Farms
+* Chelsea
+* Gloucester
+* Hamilton/Wenham
+* Ipswich
+* Lynn
+* Manchester
+* Montserrat
+* Newburyport
+* North Beverly
+* North Station
+* Prides Crossing
+* River Works
+* Rockport
+* Rowley
+* Salem
+* Swampscott
+* West Gloucester
+
+### Supported Stops on the `Providence/Stoughton` line
+
+* Attleboro
+* Back Bay
+* Canton Center
+* Canton Junction
+* Hyde Park
+* Mansfield
+* Providence
+* Route 128
+* Ruggles
+* Sharon
+* South Attleboro
+* South Station
+* Stoughton
+* TF Green Airport
+* Wickford Junction
+
 ## Future Plans 
 
 * Add support for the other lines (green and silver)
