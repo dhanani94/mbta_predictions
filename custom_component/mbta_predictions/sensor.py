@@ -20,19 +20,19 @@ CONF_TIME_OFFSET = "offset_minutes"
 CONF_LIMIT = "limit"
 
 MBTA_COMMUTER_RAIL_LOOKUP_DICT = {
-    "FAIRMOUNTLINE": "CR-Fairmount",
-    "FITCHBURGLINE": "CR-Fitchburg",
+    "FAIRMOUNT": "CR-Fairmount",
+    "FITCHBURG": "CR-Fitchburg",
     "FOXBOROEVENTSERVICE": "CR-Foxboro",
-    "FRAMINGHAMWORCESTERLINE": "CR-Worcester",
+    "FRAMINGHAMWORCESTER": "CR-Worcester",
     "FRANKLINLINEFOXBOROPILOT": "CR-Franklin",
-    "GREENBUSHLINE": "CR-Greenbush",
-    "HAVERHILLLINE": "CR-Haverhill",
-    "KINGSTONPLYMOUTHLINE": "CR-Kingston",
-    "LOWELLLINE": "CR-Lowell",
-    "MIDDLEBOROUGHLAKEVILLELINE": "CR-Middleborough",
-    "NEEDHAMLINE": "CR-Needham",
-    "NEWBURYPORTROCKPORTLINE": "CR-Newburyport",
-    "PROVIDENCESTOUGHTONLINE": "CR-Providence"
+    "GREENBUSH": "CR-Greenbush",
+    "HAVERHILL": "CR-Haverhill",
+    "KINGSTONPLYMOUTH": "CR-Kingston",
+    "LOWELL": "CR-Lowell",
+    "MIDDLEBOROUGHLAKEVILLE": "CR-Middleborough",
+    "NEEDHAM": "CR-Needham",
+    "NEWBURYPORTROCKPORT": "CR-Newburyport",
+    "PROVIDENCESTOUGHTON": "CR-Providence"
 }
 
 MBTA_STOP_LOOKUP_DICT = {
