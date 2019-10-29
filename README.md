@@ -114,7 +114,7 @@ sensor:
 
 ## Commuter Rail
 
-### Supported Stops on the `Fairmount Line` line
+### Supported Stops on the `Fairmount` line
 
 * Blue Hill Avenue
 * Dedham Corp Center
@@ -128,7 +128,7 @@ sensor:
 * Talbot Avenue
 * Uphams Corner
 
-### Supported Stops on the `Fitchburg Line` line
+### Supported Stops on the `Fitchburg` line
 
 * Ayer
 * Belmont
@@ -150,7 +150,7 @@ sensor:
 * Waverley
 * West Concord
 
-### Supported Stops on the `Framingham/Worcester Line` line
+### Supported Stops on the `Framingham/Worcester` line
 
 * Ashland
 * Auburndale
@@ -171,7 +171,7 @@ sensor:
 * Westborough
 * Worcester
 
-### Supported Stops on the `Franklin Line/Foxboro Pilot` line
+### Supported Stops on the `Franklin Line/Foxboro` line
 
 * Back Bay
 * Dedham Corp Center
@@ -191,7 +191,7 @@ sensor:
 * Walpole
 * Windsor Gardens
 
-### Supported Stops on the `Greenbush Line` line
+### Supported Stops on the `Greenbush` line
 
 * Cohasset
 * East Weymouth
@@ -204,7 +204,7 @@ sensor:
 * West Hingham
 * Weymouth Landing/East Braintree
 
-### Supported Stops on the `Haverhill Line` line
+### Supported Stops on the `Haverhill` line
 
 * Andover
 * Ballardvale
@@ -221,7 +221,7 @@ sensor:
 * Wakefield
 * Wyoming Hill
 
-### Supported Stops on the `Kingston/Plymouth Line` line
+### Supported Stops on the `Kingston/Plymouth` line
 
 * Abington
 * Braintree
@@ -235,7 +235,7 @@ sensor:
 * South Weymouth
 * Whitman
 
-### Supported Stops on the `Lowell Line` line
+### Supported Stops on the `Lowell` line
 
 * Anderson/Woburn
 * Lowell
@@ -247,7 +247,7 @@ sensor:
 * Wilmington
 * Winchester Center
 
-### Supported Stops on the `Middleborough/Lakeville Line` line
+### Supported Stops on the `Middleborough/Lakeville` line
 
 * Braintree
 * Bridgewater
@@ -260,7 +260,7 @@ sensor:
 * Quincy Center
 * South Station
 
-### Supported Stops on the `Needham Line` line
+### Supported Stops on the `Needham` line
 
 * Back Bay
 * Bellevue
@@ -275,7 +275,7 @@ sensor:
 * South Station
 * West Roxbury
 
-### Supported Stops on the `Newburyport/Rockport Line` line
+### Supported Stops on the `Newburyport/Rockport` line
 
 * Beverly
 * Beverly Farms
@@ -297,7 +297,7 @@ sensor:
 * Swampscott
 * West Gloucester
 
-### Supported Stops on the `Providence/Stoughton Line` line
+### Supported Stops on the `Providence/Stoughton` line
 
 * Attleboro
 * Back Bay
@@ -314,17 +314,6 @@ sensor:
 * Stoughton
 * TF Green Airport
 * Wickford Junction
-
-### Supported Stops on the `Foxboro Event Service` line
-
-* Attleboro
-* Back Bay
-* Dedham Corp Center
-* Foxboro
-* Mansfield
-* Providence
-* South Attleboro
-* South Station
 
 ## Future Plans 
 
