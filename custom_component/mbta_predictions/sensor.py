@@ -19,6 +19,22 @@ CONF_ROUTE = "route"
 CONF_TIME_OFFSET = "offset_minutes"
 CONF_LIMIT = "limit"
 
+MBTA_COMMUTER_RAIL_LOOKUP_DICT = {
+    "FAIRMOUNTLINE": "CR-Fairmount",
+    "FITCHBURGLINE": "CR-Fitchburg",
+    "FOXBOROEVENTSERVICE": "CR-Foxboro",
+    "FRAMINGHAMWORCESTERLINE": "CR-Worcester",
+    "FRANKLINLINEFOXBOROPILOT": "CR-Franklin",
+    "GREENBUSHLINE": "CR-Greenbush",
+    "HAVERHILLLINE": "CR-Haverhill",
+    "KINGSTONPLYMOUTHLINE": "CR-Kingston",
+    "LOWELLLINE": "CR-Lowell",
+    "MIDDLEBOROUGHLAKEVILLELINE": "CR-Middleborough",
+    "NEEDHAMLINE": "CR-Needham",
+    "NEWBURYPORTROCKPORTLINE": "CR-Newburyport",
+    "PROVIDENCESTOUGHTONLINE": "CR-Providence"
+}
+
 MBTA_STOP_LOOKUP_DICT = {
     "ABINGTON": "place-PB-0194",
     "AIRPORT": "place-aport",
@@ -277,7 +293,10 @@ class MBTASensor(Entity):
         """Initialize the sensor"""
         self._stop = stop
         self._direction = direction
-        self._route = f"{route[0].upper()}{route[1:].lower()}"
+        if clean_stop_string(route) in MBTA_COMMUTER_RAIL_LOOKUP_DICT:
+            self._route = MBTA_COMMUTER_RAIL_LOOKUP_DICT[clean_stop_string(route)]
+        else
+            self._route = f"{route[0].upper()}{route[1:].lower()}"
         self._time_offset_sec = time_offset_min * 60
         self._limit = limit
         if name:
