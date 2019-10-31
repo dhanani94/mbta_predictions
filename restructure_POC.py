@@ -6,8 +6,7 @@ import json
 route = "CR-Newburyport"
 departure = "Montserrat"
 arrival = "Lynn"
-max_time = "24:00".replace(":", "%3A")
-api_url = f"https://api-v3.mbta.com/schedules?sort=arrival_time&include=stop%2Ctrip%2Cprediction%2Croute&filter%5Bmax_time%5D={max_time}&filter%5Broute%5D={route}"
+api_url = f"https://api-v3.mbta.com/schedules?sort=arrival_time&include=stop%2Ctrip%2Cprediction%2Croute&filter%5Broute%5D={route}"
 
 
 def main():
