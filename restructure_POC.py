@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import requests
 import datetime
+import json
 
 route = "CR-Newburyport"
 departure = "Montserrat"
@@ -13,12 +14,12 @@ def main():
     # Final parsed data will go in here
     organized = {"arrival->departure": [], "departure->arrival": []}
 
-    res = requests.get(api_url).json()
+    res = requests.get(api_url)
     res.raise_for_status()
 
     # Identify trips that contain at least a single designated stop
     departure_arrival_by_trip = {}
-    for item in res['data']:
+    for item in res.json()['data']:
         stop_name = item['relationships']['stop']['data']['id']
         trip_name = item['relationships']['trip']['data']['id']
         if stop_name in [arrival, departure]:
