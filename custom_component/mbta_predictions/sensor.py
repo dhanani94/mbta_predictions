@@ -177,19 +177,19 @@ class MBTASensor(Entity):
             # These don't need to be parsed as we will reference them by key
             predictions_by_id = included_data["prediction"] if "prediction" in included_data else {}
             stop_name_by_id = {stop['attributes']['name']: stop['id'] for _, stop in included_data['stop'].items()}
-
-            stops_by_trip = get_stops_by_trip(resp_json, stops_to_extract=[stop_name_by_id[self._depart_from],
-                                                                           stop_name_by_id[self._arrive_at]])
+            depart_from_name = stop_name_by_id[self._depart_from]
+            arrive_at_name = stop_name_by_id[self._arrive_at]
+            stops_by_trip = get_stops_by_trip(resp_json, stops_to_extract=[depart_from_name, arrive_at_name])
 
             current_time = datetime.datetime.now()
             # Now we're going to start parsing through the stops on trip and prediction data
             self._arrival_data = []
             for trip, stops in stops_by_trip.items():
                 # If trip has both stops AND the trip has the depart_from stop before the arrive_at stop
-                if len(stops) == 2 and stops[self._depart_from]["attributes"]["stop_sequence"] < stops[self._arrive_at]["attributes"]["stop_sequence"]:
-                    scheduled_time = datetime_from_json(stops[self._depart_from]["attributes"]["departure_time"])
+                if len(stops) == 2 and stops[depart_from_name]["attributes"]["stop_sequence"] < stops[arrive_at_name]["attributes"]["stop_sequence"]:
+                    scheduled_time = datetime_from_json(stops[depart_from_name]["attributes"]["departure_time"])
                     predicted_time = None  # Gotta figure out if predicted departure is accurate
-                    prediction_data = stops[self._depart_from]['relationships']['prediction']['data']
+                    prediction_data = stops[depart_from_name]['relationships']['prediction']['data']
                     if prediction_data is not None and prediction_data['id'] in predictions_by_id:
                         predicted_time = datetime_from_json(predictions_by_id[prediction_data['id']]['attributes']['departure_time'])
 
