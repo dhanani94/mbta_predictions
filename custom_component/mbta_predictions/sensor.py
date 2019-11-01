@@ -113,10 +113,10 @@ def organize_included_data(api_response):
     organized = {}
     for item in api_response['included']:
         item_type = item["type"]
-        item_id = item["type"]
+        item_id = item["id"]
         if item_type not in organized:
             organized[item_type] = {}
-        organized[item_type][item_id].append(item)
+        organized[item_type][item_id] = item
     return organized
 
 
