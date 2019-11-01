@@ -27,17 +27,16 @@ example `configuration.yml`:
 sensor:
   - platform: mbta_predictions
     predictions:
-     - depart_from: JFK/UMass
-       arrive_at: Alewife
-       route: Red
-     - depart_from: Montserrat
-       arrive_at: North Station
-       route: CR-Newburyport
-       return_trips: True
-     - depart_from: Montserrat
-       arrive_at: North Station
-       route: CR-Newburyport
-       return_trips: True
+    - depart_from: JFK/UMass
+      arrive_at: Alewife
+      route: Red Line
+    - depart_from: Montserrat
+      arrive_at: North Station
+      route: Newburyport/Rockport Line
+      return_trips: True
+    - depart_from: Timson St @ Brookline Ave
+      arrive_at: Highland Ave @ Wyman Ave
+      route: Salem Depot - Central Square, Lynn
 ```
 
 ### Configuration Variables
@@ -56,6 +55,8 @@ sensor:
 #### limit
 > (int) (Optional) the maximum number of predictions to send back (default: 10)
 
+
+## TODO: Document where on MBTA schedule to copy and paste values
 
 ## Future Plans
 * Add support for the other lines (green and silver)

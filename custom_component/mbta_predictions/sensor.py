@@ -36,10 +36,22 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     }
 )
 
+BASE_URL = "https://api-v3.mbta.com"
+ROUTE_DATA_BY_NAME = {}
+ROUTE_TYPES = {
+    0: "LightRail",
+    1: "HeavyRail",
+    2: "CommuterRail",
+    3: "Bus",
+    4: "Ferry"
+}
+
 
 # noinspection PyUnusedLocal,SpellCheckingInspection
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the MBTA sensor"""
+    populate_global_route_data_by_name()
+
     sensors = []
     for next_train in config.get(CONF_PREDICTIONS):
         depart_from = next_train.get(CONF_DEPART_FROM)
@@ -87,6 +99,20 @@ def datetime_from_json(json_datatime):
     return datetime.datetime.strptime(json_datatime, '%Y-%m-%dT%H:%M:%S-04:00')
 
 
+def populate_global_route_data_by_name():
+    global ROUTE_DATA_BY_NAME
+    res = requests.get(f"{BASE_URL}/routes?include=stop")  # Doesn't actually seem to include stops
+    res.raise_for_status()
+    res_json = res.json()
+    for route in res_json['data']:
+        ROUTE_DATA_BY_NAME[route['attributes']['long_name']] = {
+            'id': route['id'],
+            'color': route['attributes']['color'],
+            'type': ROUTE_TYPES[route['attributes']['type']]
+        }
+    return
+
+
 def get_stops_by_trip(api_response, stops_to_extract=()):
     # Organize stops the user wants by trip. Not all trips may have both stops which we'll handle later
     stops_by_trip = {}
@@ -100,16 +126,7 @@ def get_stops_by_trip(api_response, stops_to_extract=()):
     return stops_by_trip
 
 
-# def get_predictions_by_id(api_response, stops_to_extract=()):
-#     predictions_by_id = {}
-#     for item in [item for item in api_response['included'] if item["type"] == "prediction"]:
-#         stop_name = item['relationships']['stop']['data']['id']
-#         if not stops_to_extract or any(stop_name.lower() == stop.lower() for stop in stops_to_extract):
-#             predictions_by_id[item["id"]] = item
-#     return predictions_by_id
-
-
-def organize_included_data(api_response):
+def organize_included_data_by_type(api_response):
     organized = {}
     for item in api_response['included']:
         item_type = item["type"]
@@ -131,7 +148,8 @@ class MBTASensor(Entity):
         self._time_offset_sec = time_offset_min * 60
         self._limit = limit
         self._name = name if name else f"mbta_{self._depart_from}_to_{self._arrive_at}".replace(' ', '_')
-        self._base_url = "https://api-v3.mbta.com/schedules"
+        self._transit_color = ROUTE_DATA_BY_NAME[self._route]['color']
+        self._transit_type = ROUTE_DATA_BY_NAME[self._route]['type']
         self._arrival_data = []
 
     @property
@@ -152,16 +170,21 @@ class MBTASensor(Entity):
     def device_state_attributes(self):
         """Return the state attributes """
         logging.debug("returing attributes")
-        return {"route": self._route,
-                "depart_from": self._depart_from,
-                "arrive_at": self._arrive_at,
-                "delay": self._arrival_data[0]['delay'] if len(self._arrival_data) > 0 else None,
-                "upcoming_departures": json.dumps(self._arrival_data[1:self._limit]) if len(self._arrival_data) > 0 else json.dumps([])}
+        return {
+            "route": self._route,
+            "depart_from": self._depart_from,
+            "arrive_at": self._arrive_at,
+            "delay": self._arrival_data[0]['delay'] if len(self._arrival_data) > 0 else None,
+            "upcoming_departures": json.dumps(self._arrival_data[1:self._limit]) if len(self._arrival_data) > 0 else json.dumps([]),
+            "route_type": self._transit_type,
+            "route_color": self._transit_color
+        }
 
     def update(self):
         """Get the latest data and update the state."""
         try:
-            url = f"{self._base_url}?sort=arrival_time&include=stop%2Ctrip%2Cprediction&filter%5Broute%5D={self._route}"
+            route_id = ROUTE_DATA_BY_NAME[self._route]['id']
+            url = f"{BASE_URL}/schedules?sort=arrival_time&include=stop%2Ctrip%2Cprediction&filter%5Broute%5D={route_id}"
             logging.debug(f"Requesting API to update {self._route} [{self._depart_from}]: {url}")
             resp = requests.get(url)
             if resp.status_code != 200:
@@ -172,7 +195,7 @@ class MBTASensor(Entity):
                 raise Exception("Route data was not found!")
 
             # Lets grab data in organized form
-            included_data = organize_included_data(resp_json)
+            included_data = organize_included_data_by_type(resp_json)
 
             # These don't need to be parsed as we will reference them by key
             predictions_by_id = included_data["prediction"] if "prediction" in included_data else {}
