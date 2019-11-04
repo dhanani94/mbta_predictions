@@ -1,6 +1,5 @@
-import datetime
+from datetime import datetime, timezone, timedelta
 import logging
-from datetime import timedelta
 import json
 import homeassistant.helpers.config_validation as cv
 import requests
@@ -91,12 +90,12 @@ def convert_rel_date_to_eta_string(rd):
     return out_str.lstrip()
 
 
-def format_name(name):
-    return name
-
-
 def datetime_from_json(json_datatime):
-    return datetime.datetime.strptime(json_datatime, '%Y-%m-%dT%H:%M:%S-04:00')
+    return datetime.fromisoformat(json_datatime)
+
+
+def get_current_time():
+    return datetime.now(timezone.utc).astimezone()
 
 
 def populate_global_route_data_by_name():
@@ -204,7 +203,7 @@ class MBTASensor(Entity):
             arrive_at_name = stop_name_by_id[self._arrive_at]
             stops_by_trip = get_stops_by_trip(resp_json, stops_to_extract=[depart_from_name, arrive_at_name])
 
-            current_time = datetime.datetime.now()
+            current_time = get_current_time()
             # Now we're going to start parsing through the stops on trip and prediction data
             self._arrival_data = []
             for trip, stops in stops_by_trip.items():
