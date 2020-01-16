@@ -1,0 +1,6 @@
+{
+  "name": "mbta_predictions",
+  "render_readme": "true",
+  "country": "US",
+  "domains": ["sensor"]
+}
