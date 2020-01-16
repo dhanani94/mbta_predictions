@@ -3,6 +3,6 @@
   "name": "MBTA Predictions",
   "documentation": "https://github.com/dhanani94/mbta_predictions/blob/master/README.md",
   "dependencies": [],
-  "codeowners": ["dhanani94"],
+  "codeowners": ["dhanani94", "MikeFez"],
   "requirements": []
 }
