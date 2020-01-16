@@ -1,10 +1,6 @@
 # mbta_predictions
 Home Assistant custom component for MBTA predictions. Adding this custom component allows adding sensors for specific routes to Home Assistant. After the sensors are set up, they can be visualised in LoveLace using the custom [mbta-card](https://github.com/dhanani94/mbta-card).
 
-## TODO:
-* Commuter rail is DONE! But we need to figure out best methods to parse subway, hopefully with the same API call.
-
-
 ## Installation
 The custom component source code is located [here](/custom_component/mbta_predictions). Copying the `custom_component` directory into the root directory (alongside the `configuration.yml` file) for users using HASSIO.
 
