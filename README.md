@@ -1,10 +1,10 @@
 # mbta_predictions
 Home Assistant custom component for MBTA predictions. Adding this custom component allows adding sensors for specific routes to Home Assistant. After the sensors are set up, they can be visualised in LoveLace using the custom [mbta-card](https://github.com/dhanani94/mbta-card).
 
-## Installation 
-The custom component source code is located [here](/custom_component/mbta_predictions). Copying the `custom_component` directory into the root directory (alongside the `configuration.yml` file) for users using HASSIO. 
+## Installation
+The custom component source code is located [here](/custom_component/mbta_predictions). Copying the `custom_component` directory into the root directory (alongside the `configuration.yml` file) for users using HASSIO.
 
-## Configuration 
+## Configuration
 To enable this sensor, add the following lines to your `configuration.yaml` file:
 
 ```yaml
@@ -23,102 +23,48 @@ example `configuration.yml`:
 sensor:
   - platform: mbta_predictions
     predictions:
-     - stop: JFK/UMass
-       destination: Alewife
-       route: Red
-     - stop: Savin Hill
-       destination: Alewife
-       route: Red
-     - stop: South Station
-       destination: Ashmont
-       route: Red
+    - depart_from: JFK/UMass
+      arrive_at: Alewife
+      route: Red Line  # Subway
+    - depart_from: Montserrat
+      arrive_at: North Station
+      route: Newburyport/Rockport Line  # Commuter Rail
+      return_trips: True
+    - depart_from: Timson St @ Brookline Ave
+      arrive_at: Highland Ave @ Wyman Ave
+      route: Salem Depot - Central Square, Lynn  # Bus
+    - depart_from: Charlestown
+      arrive_at: Long Wharf (South)
+      route: Charlestown Ferry  # Ferry
 ```
 
 ### Configuration Variables
-#### stop
-> (string) (Required) the stop name (e.g. Harvard)
-#### destination
-> (string) (Required) the file stop for the train (e.g. `Braintree`)
+#### depart_from
+> (string) (Required) the stop in which you will begin transit from (e.g. `JFK/UMass`)
+#### arrive_at
+> (string) (Required) the stop in which you will end your trip  (e.g. `Alewife`)
 #### route
-> (string) (Required) the route (e.g. `Red`)
+> (string) (Required) the route (e.g. `Red Line`, `Newburyport/Rockport Line`, `Salem Depot - Central Square, Lynn`)
 #### name
-> (string) (Optional) the name of the sensor (default: "mbta_STOP_NAME")
+> (string) (Optional) the name of the sensor (default: "mbta_DEPARTURE_TO_ARRIVAL")
+#### return_trips
+> (boolean) (Optional) when true, will generate a second entity with depart_from/arrive_at swapped (default: False)
 #### offset_minutes
 > (int) (Optional) the minimum minutes remaining before arrival (default: 0)
 #### limit
 > (int) (Optional) the maximum number of predictions to send back (default: 10)
 
 
-### Supported Stops on the `Red` line
+## How To Find depart_from/arrive_at/route
+As we're pulling these values from the MBTA API, the easiest method to find the values needed is to navigate to [MBTA Schedules Page](https://mbta.com/schedules). You'll see all of the routes available, so click the one you want to integrate.
+At the top of the screen you'll see the route name, which should be used as the route in your configuration (excluding any numbers that might appear before the name). Below that, you'll either see a table or a list of stops. Use those stop names as depart_from and arrive_to values.
 
-* **Alewife**
-* Davis
-* Porter
-* Harvard
-* Central
-* Kendall/MIT
-* Charles/MGH
-* Park Street
-* Downtown Crossing
-* South Station
-* Broadway
-* Andrew
-* JFK/UMass
-* Savin Hill
-* Fields Corner
-* Shawmut
-* **Ashmont**
-* North Quincy
-* Wollaston
-* Quincy Center
-* Quincy Adams
-* **Braintree**
-
-### Supported Stops on the `Orange` line
-
-* **Oak Grove**
-* Malden Center
-* Wellington
-* Assembly
-* Sullivan Square
-* Community College
-* North Station
-* Haymarket
-* State
-* Downtown Crossing
-* Chinatown
-* Tufts Medical Center
-* Back Bay
-* Massachusetts Avenue
-* Ruggles
-* Roxbury Crossing
-* Jackson Square
-* Stony Brook
-* Green Street
-* **Forest Hills**
-
-### Supported Stops on the `Blue` line
-
-* **Wonderland**
-* Revere Beach
-* Beachmont
-* Suffolk Downs
-* Orient Heights
-* Wood Island
-* Airport
-* Maverick
-* Aquarium
-* State
-* Government Center
-* **Bowdoin**
-
-## Future Plans 
-
-* Add support for the other lines (green and silver)
-* Add support for buses 
+## Future Plans
 * Create PR for custom component in the [Home Asistant Repo](https://github.com/home-assistant/home-assistant/tree/dev/homeassistant/components)
-* Create custom compnent in HACS 
-* [Buy me coffee?](https://www.buymeacoffee.com/dhanani94)
+* Create custom component in HACS
+
+* [Buy dhanani94 coffee?](https://www.buymeacoffee.com/dhanani94)
+* [Buy MikeFez coffee?](https://www.buymeacoffee.com/MikeFez)
 
 ## Inspirations
 
