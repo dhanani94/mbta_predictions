@@ -2,5 +2,6 @@
   "name": "MBTA Predictions",
   "render_readme": true,
   "country": "US",
-  "domains": ["sensor"]
+  "domains": ["sensor"],
+  "iot_class": "cloud_poll"
 }
