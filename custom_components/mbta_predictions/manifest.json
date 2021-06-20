@@ -4,5 +4,6 @@
   "documentation": "https://github.com/dhanani94/mbta_predictions",
   "dependencies": [],
   "codeowners": ["dhanani94", "MikeFez"],
-  "requirements": []
+  "requirements": [],
+  "version": "1.0"
 }
