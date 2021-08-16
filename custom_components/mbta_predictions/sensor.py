@@ -150,6 +150,7 @@ class MBTASensor(Entity):
         self._transit_color = ROUTE_DATA_BY_NAME[self._route]['color']
         self._transit_type = ROUTE_DATA_BY_NAME[self._route]['type']
         self._arrival_data = []
+        self._direction = None
 
     @property
     def name(self):
@@ -176,7 +177,8 @@ class MBTASensor(Entity):
             "delay": self._arrival_data[0]['delay'] if len(self._arrival_data) > 0 else None,
             "upcoming_departures": json.dumps(self._arrival_data[1:self._limit]) if len(self._arrival_data) > 0 else json.dumps([]),
             "route_type": self._transit_type,
-            "route_color": self._transit_color
+            "route_color": self._transit_color,
+            "direction": self._direction
         }
 
     def update(self):
@@ -247,6 +249,8 @@ class MBTASensor(Entity):
                                 "departure": time_until_arrival,
                                 "delay": delay
                             })
+
+                            self._direction = depart_stop["attributes"]["direction_id"]
 
         except Exception as e:
             logging.exception(f"Encountered Exception: {e}")
