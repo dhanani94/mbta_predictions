@@ -199,8 +199,13 @@ class MBTASensor(Entity):
             # These don't need to be parsed as we will reference them by key
             predictions_by_id = included_data["prediction"] if "prediction" in included_data else {}
             stop_name_by_id = {stop['attributes']['name']: stop['id'] for _, stop in included_data['stop'].items()}
-            depart_from_name = stop_name_by_id[self._depart_from]
-            arrive_at_name = stop_name_by_id[self._arrive_at]
+            try:
+                depart_from_name = stop_name_by_id[self._depart_from]
+                arrive_at_name = stop_name_by_id[self._arrive_at]
+            except KeyError:
+                logging.debug(f"No trips invovling {self._depart_from} and {self._arrive_at}")
+                return
+
             stops_by_trip = get_stops_by_trip(resp_json, stops_to_extract=[depart_from_name, arrive_at_name])
 
             current_time = get_current_time()
