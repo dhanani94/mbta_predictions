@@ -150,6 +150,7 @@ class MBTASensor(Entity):
         self._transit_color = ROUTE_DATA_BY_NAME[self._route]['color']
         self._transit_type = ROUTE_DATA_BY_NAME[self._route]['type']
         self._arrival_data = []
+        self._direction = None
 
     @property
     def name(self):
@@ -176,7 +177,8 @@ class MBTASensor(Entity):
             "delay": self._arrival_data[0]['delay'] if len(self._arrival_data) > 0 else None,
             "upcoming_departures": json.dumps(self._arrival_data[1:self._limit]) if len(self._arrival_data) > 0 else json.dumps([]),
             "route_type": self._transit_type,
-            "route_color": self._transit_color
+            "route_color": self._transit_color,
+            "direction": self._direction
         }
 
     def update(self):
@@ -184,6 +186,7 @@ class MBTASensor(Entity):
         try:
             route_id = ROUTE_DATA_BY_NAME[self._route]['id']
             url = f"{BASE_URL}/schedules?sort=arrival_time&include=stop%2Ctrip%2Cprediction&filter%5Broute%5D={route_id}"
+
             logging.debug(f"Requesting API to update {self._route} [{self._depart_from}]: {url}")
             resp = requests.get(url)
             if resp.status_code != 200:
@@ -196,44 +199,62 @@ class MBTASensor(Entity):
             # Lets grab data in organized form
             included_data = organize_included_data_by_type(resp_json)
 
+
             # These don't need to be parsed as we will reference them by key
             predictions_by_id = included_data["prediction"] if "prediction" in included_data else {}
-            stop_name_by_id = {stop['attributes']['name']: stop['id'] for _, stop in included_data['stop'].items()}
+
+            stop_ids_by_name = {}
+            for _, stop in included_data['stop'].items():
+                name = stop['attributes']['name']
+                stop_ids_by_name.setdefault(name, {})[stop['id']] = stop
             try:
-                depart_from_name = stop_name_by_id[self._depart_from]
-                arrive_at_name = stop_name_by_id[self._arrive_at]
+                depart_from_ids = stop_ids_by_name[self._depart_from]
+                arrive_at_ids   = stop_ids_by_name[self._arrive_at]
             except KeyError:
                 logging.debug(f"No trips invovling {self._depart_from} and {self._arrive_at}")
                 return
 
-            stops_by_trip = get_stops_by_trip(resp_json, stops_to_extract=[depart_from_name, arrive_at_name])
+            stops_by_trip = get_stops_by_trip(resp_json, stops_to_extract=[*depart_from_ids.keys(), *arrive_at_ids.keys()])
 
             current_time = get_current_time()
             # Now we're going to start parsing through the stops on trip and prediction data
             self._arrival_data = []
             for trip, stops in stops_by_trip.items():
-                # If trip has both stops AND the trip has the depart_from stop before the arrive_at stop
-                if len(stops) == 2 and stops[depart_from_name]["attributes"]["stop_sequence"] < stops[arrive_at_name]["attributes"]["stop_sequence"]:
-                    scheduled_time = datetime_from_json(stops[depart_from_name]["attributes"]["departure_time"])
-                    predicted_time = None  # Gotta figure out if predicted departure is accurate
-                    prediction_data = stops[depart_from_name]['relationships']['prediction']['data']
-                    if prediction_data is not None and prediction_data['id'] in predictions_by_id:
-                        predicted_time = datetime_from_json(predictions_by_id[prediction_data['id']]['attributes']['departure_time'])
 
-                    # Use prediction might not be available, or scheduled time if not.
-                    accurate_departure = predicted_time if predicted_time is not None else scheduled_time
+                if len(stops) == 2:
+                    # Work out which stop is which
+                    (depart_id, arrive_id) = stops.keys()
+                    if (arrive_id in depart_from_ids):
+                        (depart_id, arrive_id) = (arrive_id, depart_id)
 
-                    if (accurate_departure - current_time).total_seconds() > self._time_offset_sec:
-                        time_until_arrival = convert_rel_date_to_eta_string(relativedelta(accurate_departure, current_time))
-                        delay = None
-                        # If there is a prediction, and the prediction isn't the actual scheduled arrival time
-                        if predicted_time is not None and predicted_time != scheduled_time:
-                            delay = convert_rel_date_to_eta_string(relativedelta(predicted_time, scheduled_time))
+                    arrive_stop = stops[arrive_id]
+                    depart_stop = stops[depart_id]
 
-                        self._arrival_data.append({
-                            "departure": time_until_arrival,
-                            "delay": delay
-                        })
+                    # If trip has both stops AND the trip has the depart_from stop before the arrive_at stop
+                    if depart_stop["attributes"]["stop_sequence"] < arrive_stop["attributes"]["stop_sequence"]:
+                        scheduled_time = datetime_from_json(depart_stop["attributes"]["departure_time"])
+                        predicted_time = None  # Gotta figure out if predicted departure is accurate
+                        prediction_data = depart_stop['relationships']['prediction']['data']
+
+                        if prediction_data is not None and prediction_data['id'] in predictions_by_id:
+                            predicted_time = datetime_from_json(predictions_by_id[prediction_data['id']]['attributes']['departure_time'])
+
+                        # Use prediction might not be available, or scheduled time if not.
+                        accurate_departure = predicted_time if predicted_time is not None else scheduled_time
+
+                        if (accurate_departure - current_time).total_seconds() > self._time_offset_sec:
+                            time_until_arrival = convert_rel_date_to_eta_string(relativedelta(accurate_departure, current_time))
+                            delay = None
+                            # If there is a prediction, and the prediction isn't the actual scheduled arrival time
+                            if predicted_time is not None and predicted_time != scheduled_time:
+                                delay = convert_rel_date_to_eta_string(relativedelta(predicted_time, scheduled_time))
+
+                            self._arrival_data.append({
+                                "departure": time_until_arrival,
+                                "delay": delay
+                            })
+
+                            self._direction = depart_stop["attributes"]["direction_id"]
 
         except Exception as e:
             logging.exception(f"Encountered Exception: {e}")
