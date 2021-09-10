@@ -207,9 +207,13 @@ class MBTASensor(Entity):
             for _, stop in included_data['stop'].items():
                 name = stop['attributes']['name']
                 stop_ids_by_name.setdefault(name, {})[stop['id']] = stop
+            try:
+                depart_from_ids = stop_ids_by_name[self._depart_from]
+                arrive_at_ids   = stop_ids_by_name[self._arrive_at]
+            except KeyError:
+                logging.debug(f"No trips invovling {self._depart_from} and {self._arrive_at}")
+                return
 
-            depart_from_ids = stop_ids_by_name[self._depart_from]
-            arrive_at_ids   = stop_ids_by_name[self._arrive_at]
             stops_by_trip = get_stops_by_trip(resp_json, stops_to_extract=[*depart_from_ids.keys(), *arrive_at_ids.keys()])
 
             current_time = get_current_time()
