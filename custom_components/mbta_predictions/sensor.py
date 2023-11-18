@@ -18,6 +18,7 @@ CONF_ROUTE = "route"
 CONF_RETURN_TRIPS = "return_trips"
 CONF_TIME_OFFSET = "offset_minutes"
 CONF_LIMIT = "limit"
+CONF_NAME = "name"
 
 SCAN_INTERVAL = timedelta(seconds=30)
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
@@ -29,7 +30,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
                 vol.Required(CONF_ROUTE): cv.string,
                 vol.Optional(CONF_RETURN_TRIPS, default=False): cv.boolean,
                 vol.Optional(CONF_TIME_OFFSET, default=0): cv.positive_int,
-                vol.Optional(CONF_LIMIT, default=10): cv.positive_int
+                vol.Optional(CONF_LIMIT, default=10): cv.positive_int,
+                vol.Optional(CONF_NAME): cv.string
             }
         ]
     }
